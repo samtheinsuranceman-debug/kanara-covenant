@@ -1,1 +1,87 @@
-[Full test-pulse.html]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Living Pulse v1.0 Test — Kanara Covenant (90bpm)</title>
+  <link rel="stylesheet" href="css/pulse.css">
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; background: #0f172a; color: #e2e8f0; padding: 2rem; line-height: 1.5; }
+    .container { max-width: 960px; margin: 0 auto; }
+    .emblem { width: 180px; height: 180px; margin: 2rem auto; background: linear-gradient(145deg, #1e2937, #0f172a); border-radius: 9999px; display: flex; align-items: center; justify-content: center; font-size: 4rem; border: 3px solid #f4d35e; box-shadow: 0 0 40px rgba(244,211,94,0.1); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+    .kpi { background: #1e2937; padding: 1.25rem; border-radius: 12px; border: 1px solid #334155; }
+    .kpi h3 { margin: 0 0 .5rem; font-size: .95rem; color: #94a3b8; }
+    .kpi .value { font-size: 2rem; font-weight: 700; color: #f8b4b4; }
+    .nav a:hover { background: #1e2937; }
+    .controls { background: #1e2937; padding: 1rem 1.5rem; border-radius: 12px; margin: 2rem 0; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+    button { background: #334155; color: #f4d35e; border: none; padding: .5rem 1rem; border-radius: 6px; cursor: pointer; }
+    button:hover { background: #475569; }
+    .info { font-size: .85rem; color: #64748b; }
+    .covenant-heart { font-size: 3rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Kanara Covenant — Living Pulse v1.0 Testbed</h1>
+    <p class="info">90 BPM heartbeat + breathing (light red/gold). Synced via absolute time. Open this file in multiple tabs/windows — they should beat in perfect unison.</p>
+
+    <header data-partial="header"></header>
+
+    <!-- Primary Emblem -->
+    <div class="emblem living-pulse pulse-emblem" data-emblem>
+      ✝︎
+    </div>
+    <p style="text-align:center; margin-top:-1rem; color:#f4d35e; font-weight:600;">THE LIVING COVENANT HEART • 90 BPM</p>
+
+    <!-- Dashboard-style KPIs -->
+    <div class="grid">
+      <div class="kpi pulse-kpi">
+        <h3>Covenant Portfolio Health</h3>
+        <div class="value">94</div>
+        <small style="color:#64748b">+3 this quarter • synced pulse</small>
+      </div>
+      <div class="kpi pulse-kpi">
+        <h3>Brotherhood Calibration</h3>
+        <div class="value">87</div>
+        <small style="color:#64748b">Strong alignment</small>
+      </div>
+      <div class="kpi pulse-card">
+        <h3>Russell Stewardship</h3>
+        <div class="value">$2.4M</div>
+        <small style="color:#64748b">Tax-advantaged • living</small>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button onclick="window.LivingPulse?.pause()">Pause Pulse</button>
+      <button onclick="window.LivingPulse?.resume()">Resume</button>
+      <button onclick="window.LivingPulse?.setIntensity(0.4); window.LivingPulse?.resync()">Low Intensity (0.4)</button>
+      <button onclick="window.LivingPulse?.setIntensity(1.0); window.LivingPulse?.resync()">Full Intensity</button>
+      <button onclick="console.log(window.LivingPulse?.getDebugInfo())">Log Debug Info</button>
+      <span class="info" id="phase-info"></span>
+    </div>
+
+    <div id="debug">
+      <h3>Sync Verification</h3>
+      <p class="info">The three KPI cards and the central emblem use the exact same global clock. Their animations align even if this tab was opened minutes after another.</p>
+      <p><strong>Technical:</strong> RAF + Date.now() % period. No start-time drift. Works identically on every .html page that includes pulse.css + pulse.js.</p>
+    </div>
+  </div>
+
+  <script src="js/pulse.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    // Extra demo: live phase readout
+    setInterval(() => {
+      const info = document.getElementById('phase-info');
+      if (info && window.LivingPulse) {
+        const d = window.LivingPulse.getDebugInfo();
+        info.textContent = `Beat phase: ${d.phaseBeat} | Intensity: ${d.intensity}`;
+      }
+    }, 120);
+  </script>
+
+  <footer data-partial="footer"></footer>
+</body>
+</html>

@@ -1,1 +1,104 @@
-[Full brotherhood.html]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brotherhood Calibration • Kanara Covenant</title>
+  <link rel="stylesheet" href="css/pulse.css">
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; background:#0f172a; color:#e2e8f0; margin:0; }
+    .container { max-width:820px; margin:2rem auto; padding:0 1.5rem; }
+    h1 { color:#f4d35e; }
+    .slider-group { margin:1.5rem 0; }
+    label { display:block; margin-bottom:.35rem; color:#94a3b8; font-size:.9rem; }
+    input[type=range] { width:100%; accent-color:#f4d35e; }
+    .result { margin:2rem 0; padding:2rem; background:#1e2937; border-radius:16px; text-align:center; border:1px solid #334155; }
+    .score { font-size:4.5rem; font-weight:800; line-height:1; color:#f8b4b4; }
+    .score.gold { color:#f4d35e; }
+    .pulse-orb { width:140px; height:140px; margin:1.5rem auto; border-radius:999px; background: radial-gradient(circle, #f8b4b4 0%, #e8c547 70%); display:flex; align-items:center; justify-content:center; font-size:1.1rem; font-weight:700; color:#0f172a; box-shadow:0 0 60px rgba(244,211,94,.4); }
+    .interpretation { color:#94a3b8; max-width:420px; margin:0 auto; }
+  </style>
+</head>
+<body>
+  <header data-partial="header"></header>
+
+  <div class="container">
+    <h1>Brotherhood Calibration</h1>
+    <p style="max-width:620px">Answer honestly. The Living Pulse will respond to your alignment. This is not a test — it is a mirror for the covenant we keep with one another.</p>
+
+    <div class="slider-group">
+      <label>Spiritual Alignment (prayer, Scripture, surrender)</label>
+      <input type="range" id="spiritual" min="0" max="100" value="72" oninput="calculateScore()">
+    </div>
+    <div class="slider-group">
+      <label>Relational Integrity (honesty, presence with brothers &amp; family)</label>
+      <input type="range" id="relational" min="0" max="100" value="81" oninput="calculateScore()">
+    </div>
+    <div class="slider-group">
+      <label>Financial Stewardship (generosity, Russell principles, debt-free living)</label>
+      <input type="range" id="financial" min="0" max="100" value="65" oninput="calculateScore()">
+    </div>
+    <div class="slider-group">
+      <label>Communal Accountability (showing up, speaking truth, receiving correction)</label>
+      <input type="range" id="communal" min="0" max="100" value="78" oninput="calculateScore()">
+    </div>
+
+    <div class="result">
+      <div id="orb" class="pulse-orb living-pulse pulse-emblem" data-emblem style="background: radial-gradient(circle, #f8b4b4 20%, #e8c547 85%);">CALIBRATED</div>
+      <div class="score" id="score">74</div>
+      <div class="interpretation" id="interpretation">Your covenant rhythm is steady. The brotherhood is strengthened by your presence.</div>
+    </div>
+
+    <p style="text-align:center; color:#64748b; font-size:.9rem;">Notice how the orb and score elements breathe and beat with the global 90bpm Living Pulse. High scores intensify the golden light.</p>
+  </div>
+
+  <script src="js/pulse.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    function calculateScore() {
+      const s = +document.getElementById('spiritual').value;
+      const r = +document.getElementById('relational').value;
+      const f = +document.getElementById('financial').value;
+      const c = +document.getElementById('communal').value;
+
+      const avg = Math.round((s + r + f + c) / 4);
+      const scoreEl = document.getElementById('score');
+      const interpEl = document.getElementById('interpretation');
+      const orb = document.getElementById('orb');
+
+      scoreEl.textContent = avg;
+
+      if (avg >= 85) {
+        scoreEl.className = 'score gold';
+        interpEl.textContent = 'Exceptional alignment. The Living Pulse burns bright gold through you. You are a steadying presence in the brotherhood.';
+        orb.style.background = 'radial-gradient(circle, #f4d35e 10%, #e8c547 80%)';
+        orb.style.boxShadow = '0 0 80px rgba(244,211,94,.6)';
+        if (window.LivingPulse) window.LivingPulse.setIntensity(1.15);
+      } else if (avg >= 70) {
+        scoreEl.className = 'score';
+        interpEl.textContent = 'Strong and growing. The covenant heart beats clearly in your life. Small daily calibrations will deepen the gold.';
+        orb.style.background = 'radial-gradient(circle, #f8b4b4 25%, #e8c547 80%)';
+        orb.style.boxShadow = '0 0 50px rgba(244,211,94,.35)';
+        if (window.LivingPulse) window.LivingPulse.setIntensity(1.0);
+      } else {
+        scoreEl.className = 'score';
+        interpEl.textContent = 'The rhythm is present but invites more intention. Return to the brotherhood table. The pulse waits patiently for you.';
+        orb.style.background = 'radial-gradient(circle, #f8b4b4 40%, #e8c547 95%)';
+        orb.style.boxShadow = '0 0 30px rgba(248,180,180,.3)';
+        if (window.LivingPulse) window.LivingPulse.setIntensity(0.85);
+      }
+    }
+
+    // Initial calculation + pulse attachment
+    window.addEventListener('load', function() {
+      calculateScore();
+      if (window.LivingPulse) {
+        window.LivingPulse.attach('#orb');
+        window.LivingPulse.setIntensity(1.0);
+      }
+    });
+  </script>
+
+  <footer data-partial="footer"></footer>
+</body>
+</html>

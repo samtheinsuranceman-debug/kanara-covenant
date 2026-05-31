@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources • Kanara Covenant</title>
+  <link rel="stylesheet" href="css/pulse.css">
+  <style>
+    body { 
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+      background: #0f172a; 
+      color: #e2e8f0; 
+      margin: 0; 
+      line-height: 1.7; 
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; }
+    h1 { color: #f4d35e; font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .subtitle { color: #94a3b8; font-size: 1.1rem; margin-bottom: 2.5rem; }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .resource-card {
+      background: #1e2937;
+      border: 1px solid #334155;
+      border-radius: 14px;
+      padding: 1.5rem;
+      transition: transform 0.2s ease;
+    }
+    .resource-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .resource-card h3 {
+      color: #f8b4b4;
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+    }
+
+    .resource-card p {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .resource-meta {
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+
+    .pulse-accent {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #f4d35e;
+      border-radius: 50%;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <header data-partial="header"></header>
+
+  <div class="container">
+    <h1>Resources</h1>
+    <p class="subtitle">
+      Teachings, reflections, and stewardship wisdom to keep your life in rhythm with the Living Covenant Heart.
+    </p>
+
+    <div class="resource-grid">
+      <!-- Covenant Identity -->
+      <div class="resource-card living-pulse">
+        <h3>The Rhythm of Covenant</h3>
+        <p>A foundational teaching on why 90 BPM was chosen as the tempo of our brotherhood and what it means to live in sacred agreement.</p>
+        <div class="resource-meta">
+          <span class="pulse-accent"></span> Core Teaching • 12 min read
+        </div>
+      </div>
+
+      <!-- Brotherhood -->
+      <div class="resource-card living-pulse">
+        <h3>Calibrating the Brotherhood</h3>
+        <p>Practical guidance on the four alignments (Spiritual, Relational, Financial, Communal) and how to walk in mutual accountability.</p>
+        <div class="resource-meta">
+          <span class="pulse-accent"></span> Brotherhood Series • 18 min read
+        </div>
+      </div>
+
+      <!-- Stewardship -->
+      <div class="resource-card living-pulse">
+        <h3>Stewardship as Worship</h3>
+        <p>Russell Capital principles reframed through the lens of covenant. How our portfolios can serve the Kingdom without becoming idols.</p>
+        <div class="resource-meta">
+          <span class="pulse-accent"></span> Russell Capital x Covenant • 22 min read
+        </div>
+      </div>
+
+      <div class="resource-card living-pulse">
+        <h3>The 90 BPM Morning Rhythm</h3>
+        <p>A simple daily practice that aligns body, breath, and spirit before the day begins. Used by many brothers in the circle.</p>
+        <div class="resource-meta">
+          <span class="pulse-accent"></span> Practice Guide • 8 min read
+        </div>
+      </div>
+
+      <div class="resource-card living-pulse">
+        <h3>Leaving a Living Legacy</h3>
+        <p>Thoughts on generational wealth, family covenants, and how financial decisions today can bless those who come after us.</p>
+        <div class="resource-meta">
+          <span class="pulse-accent"></span> Stewardship • 15 min read
+        </div>
+      </div>
+
+      <div class="resource-card living-pulse">
+        <h3>Recordings from Past Gatherings</h3>
+        <p>Audio from the First Covenant Renewal Ceremony and the Stewardship Intensive with Russell Capital guests.</p>
+        <div class="resource-meta">
+          <span class="pulse-accent"></span> Audio Library • Updated regularly
+        </div>
+      </div>
+    </div>
+
+    <p style="text-align: center; margin-top: 3rem; color: #64748b;">
+      Looking for something specific?<br>
+      <a href="contact.html" style="color: #f4d35e;">Reach out to the Circle Keepers →</a>
+    </p>
+  </div>
+
+  <footer data-partial="footer"></footer>
+
+  <script src="js/pulse.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>

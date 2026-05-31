@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enter the Pact • Kanara Covenant</title>
+  <link rel="stylesheet" href="css/pulse.css">
+  <style>
+    body { 
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+      background: #0f172a; 
+      color: #e2e8f0; 
+      margin: 0; 
+      line-height: 1.7; 
+    }
+    .container { max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem; }
+    h1 { color: #f4d35e; font-size: 2.6rem; margin-bottom: 0.5rem; }
+    .subtitle { color: #94a3b8; font-size: 1.15rem; margin-bottom: 2.5rem; }
+
+    .pact-intro {
+      background: #1e2937;
+      border: 1px solid #334155;
+      border-radius: 14px;
+      padding: 1.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .commitment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .commitment-option {
+      background: #1e2937;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .commitment-option:hover {
+      border-color: #f4d35e;
+    }
+    .commitment-option input {
+      margin-right: 0.75rem;
+      accent-color: #f4d35e;
+    }
+    .commitment-option label {
+      font-weight: 500;
+      color: #e2e8f0;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      display: block;
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: #1e2937;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      color: #e2e8f0;
+      font-size: 1rem;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: #f4d35e;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #f4d35e;
+      color: #0f172a;
+      font-weight: 700;
+      padding: 0.9rem 2.25rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.2);
+    }
+
+    .success-state {
+      display: none;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      background: #1e2937;
+      border: 2px solid #f4d35e;
+      border-radius: 16px;
+      margin-top: 2rem;
+    }
+    .success-state.active {
+      display: block;
+    }
+
+    .success-emblem {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 1.5rem;
+      font-size: 3.5rem;
+      background: #1e2937;
+      border: 4px solid #f4d35e;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 60px rgba(244, 211, 94, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <header data-partial="header"></header>
+
+  <div class="container">
+    <h1>Enter the Pact</h1>
+    <p class="subtitle">
+      This is not a membership form. This is a living agreement.
+    </p>
+
+    <div class="pact-intro">
+      <p>
+        When you enter the Kanara Covenant, you are binding yourself to a rhythm — 
+        90 beats per minute of faithfulness, brotherhood, and wise stewardship. 
+        You are not signing a contract. You are stepping into a living heart.
+      </p>
+      <p>
+        The commitments below are not checkboxes for performance. 
+        They are the places where you invite the brotherhood to hold you accountable 
+        and the pulse to keep time with your life.
+      </p>
+    </div>
+
+    <form id="pact-form">
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required placeholder="Full name">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required placeholder="you@example.com">
+      </div>
+
+      <div class="form-group">
+        <label>Where are you committing to walk in rhythm?</label>
+        <div class="commitment-grid">
+          <div class="commitment-option">
+            <input type="checkbox" id="spiritual" name="commitments" value="spiritual">
+            <label for="spiritual">Spiritual Alignment — Prayer, Scripture, and surrender</label>
+          </div>
+          <div class="commitment-option">
+            <input type="checkbox" id="relational" name="commitments" value="relational">
+            <label for="relational">Relational Integrity — Honesty and presence with brothers &amp; family</label>
+          </div>
+          <div class="commitment-option">
+            <input type="checkbox" id="financial" name="commitments" value="financial">
+            <label for="financial">Financial Stewardship — Generosity and Kingdom-minded wealth</label>
+          </div>
+          <div class="commitment-option">
+            <input type="checkbox" id="communal" name="commitments" value="communal">
+            <label for="communal">Communal Accountability — Showing up and receiving correction</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="vow">One sentence of personal commitment</label>
+        <textarea id="vow" name="vow" rows="3" placeholder="I commit to..."></textarea>
+      </div>
+
+      <button type="submit" class="btn">Enter the Covenant</button>
+    </form>
+
+    <div id="success-state" class="success-state">
+      <div class="success-emblem living-pulse pulse-emblem" data-emblem>✝︎</div>
+      <h2 style="color:#f4d35e; margin-bottom:0.5rem;">The Pact is Sealed.</h2>
+      <p style="max-width:420px; margin:0 auto 1.5rem; color:#cbd5e1;">
+        Your name is now written in the living rhythm. 
+        The 90 BPM heart of the Covenant beats with you.
+      </p>
+      <p>
+        <strong>Welcome, brother.</strong><br>
+        You will receive a confirmation and next steps within the hour.
+      </p>
+      <button onclick="resetForm()" class="btn" style="margin-top:1rem; background:transparent; color:#f4d35e; border:2px solid #f4d35e;">
+        Return to the Heart
+      </button>
+    </div>
+  </div>
+
+  <footer data-partial="footer"></footer>
+
+  <script src="js/pulse.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    const form = document.getElementById('pact-form');
+    const success = document.getElementById('success-state');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Hide form
+      form.style.display = 'none';
+
+      // Show success
+      success.classList.add('active');
+
+      // Boost the Living Pulse on success (thematic moment)
+      if (window.LivingPulse) {
+        const original = window.LivingPulse.getIntensity();
+        window.LivingPulse.setIntensity(1.35);
+        
+        // Slowly return to normal after 12 seconds
+        setTimeout(() => {
+          if (window.LivingPulse) {
+            window.LivingPulse.setIntensity(original);
+          }
+        }, 12000);
+      }
+
+      // Scroll to success state
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    function resetForm() {
+      success.classList.remove('active');
+      form.style.display = 'block';
+      form.reset();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

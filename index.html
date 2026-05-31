@@ -1,1 +1,100 @@
-[Full index.html]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanara Covenant • The Living Heart at 90 BPM</title>
+  <meta name="description" content="Kanara Covenant — A living brotherhood bound by sacred pact. 90bpm Living Pulse heartbeat animation unites our identity, Russell Capital stewardship, and calibrated alignment.">
+  <link rel="stylesheet" href="css/pulse.css">
+  <style>
+    :root {
+      --navy: #0f172a;
+      --charcoal: #1e2937;
+      --gold: #f4d35e;
+      --red: #f8b4b4;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--navy); color: var(--text); line-height: 1.6; }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .hero { min-height: 92vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 4rem 1.5rem; background: linear-gradient(180deg, #0f172a 0%, #1e2937 100%); position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 40%, rgba(248,180,180,0.06) 0%, transparent 70%); pointer-events: none; }
+    .hero-content { max-width: 780px; position: relative; z-index: 2; }
+    .pulse-emblem.hero-emblem { width: 220px; height: 220px; margin: 0 auto 2rem; font-size: 5.5rem; background: #1e2937; border: 4px solid var(--gold); border-radius: 9999px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 80px rgba(244,211,94,0.15); }
+    .hero h1 { font-size: clamp(2.8rem, 7vw, 4.2rem); margin: 0 0 1rem; line-height: 1.05; font-weight: 700; letter-spacing: -.04em; }
+    .hero .tagline { font-size: 1.35rem; color: var(--gold); margin-bottom: 2rem; font-weight: 500; }
+    .hero p { max-width: 520px; margin: 0 auto 2.5rem; color: var(--muted); font-size: 1.1rem; }
+    .cta { display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .btn { display: inline-block; padding: .85rem 2rem; border-radius: 9999px; font-weight: 600; font-size: 1rem; transition: all .2s; border: 2px solid transparent; }
+    .btn-primary { background: var(--gold); color: #0f172a; }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.2); }
+    .btn-secondary { background: transparent; color: var(--gold); border-color: var(--gold); }
+    .btn-secondary:hover { background: rgba(244,211,94,0.1); }
+
+    .section { padding: 4.5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
+    .section h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .card { background: var(--charcoal); padding: 1.75rem; border-radius: 14px; border: 1px solid #334155; }
+    .card h3 { margin-top: 0; color: var(--gold); }
+  </style>
+</head>
+<body>
+  <header data-partial="header"></header>
+
+  <header class="hero">
+    <div class="hero-content">
+      <div class="pulse-emblem hero-emblem living-pulse" data-emblem aria-hidden="true">✝︎</div>
+      <h1>The Living Covenant Heart</h1>
+      <div class="tagline">90 beats per minute. One rhythm across every page, every brother, every decision.</div>
+      <p>Bound by sacred agreement. Calibrated in faith and stewardship. The pulse of Kanara Covenant unites spiritual brotherhood with Russell Capital wisdom — a living, breathing commitment that never sleeps.</p>
+      
+      <div class="cta">
+        <a href="brotherhood.html" class="btn btn-primary">Begin Calibration</a>
+        <a href="dashboards.html" class="btn btn-secondary">View Living Portfolios</a>
+      </div>
+      <p style="margin-top:2rem; font-size:.85rem; color:#64748b;">Open this site in another tab → the heartbeat stays perfectly synchronized.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <h2 style="text-align:center">What is the Living Pulse?</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h3>90 BPM — The Calibrated Rhythm</h3>
+        <p>Resting human heart rate. The tempo of sustainable covenant life: present, enduring, neither frantic nor asleep. Every element on every page beats to this exact shared clock.</p>
+      </div>
+      <div class="card">
+        <h3>Red + Gold — Bond &amp; Light</h3>
+        <p>Soft red for the lifeblood of our pact. Warm gold for the light of stewardship and prosperity (echoing Russell Capital’s physician wealth calling). Together they form the breath of the Covenant.</p>
+      </div>
+      <div class="card">
+        <h3>Synced Across Every Page</h3>
+        <p>The same JS time engine runs on Home, Brotherhood Calibration, Dashboards, and all future pages. Load them minutes apart — the lub-dub and golden breath remain locked in perfect phase.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:#1e2937; border-top:1px solid #334155; border-bottom:1px solid #334155;">
+    <div style="max-width:720px; margin:0 auto; text-align:center;">
+      <h2 style="margin-bottom:.5rem">The Covenant Binds Us</h2>
+      <p style="color:#94a3b8; font-size:1.05rem;">Kanara Covenant is a brotherhood of men committed to sacred agreements — with God, with one another, and with wise stewardship of the resources entrusted to us. The Living Pulse is our visible, felt reminder that the agreement is alive.</p>
+      <a href="about.html" class="btn btn-secondary" style="margin-top:1rem">Read the Full Covenant Identity →</a>
+    </div>
+  </section>
+
+  <footer data-partial="footer"></footer>
+
+  <script src="js/pulse.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    // Ensure hero emblem and any future elements get extra emphasis
+    document.addEventListener('DOMContentLoaded', function() {
+      const emblem = document.querySelector('.hero-emblem');
+      if (emblem && window.LivingPulse) {
+        window.LivingPulse.setIntensity(1.0);
+      }
+    });
+  </script>

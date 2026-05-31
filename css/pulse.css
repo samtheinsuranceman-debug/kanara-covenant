@@ -1,1 +1,208 @@
-[Full pulse.css]
+/**
+ * Living Pulse v1.0 - 90bpm Covenant Heartbeat
+ * 
+ * CSS/JS synced heartbeat + breathing animation.
+ * Ties directly to Kanara Covenant identity:
+ * - 90 BPM: The calibrated, sustainable "resting heart rate" of the living Covenant —
+ *   faithful stewardship, brotherhood alignment, and enduring pact (not frantic growth, not stagnation).
+ * - Light Red (#f8b4b4, #ff9e9e variants): The bond of covenant — sacrificial love, shared lifeblood.
+ * - Gold (#f4d35e, #e8c547): Divine light, prosperity, Russell Capital wealth stewardship, hope.
+ * 
+ * Synced across EVERY page via time-based phase (Date.now() driven).
+ * Respects prefers-reduced-motion.
+ * Applied via .living-pulse, .pulse-emblem, .pulse-kpi, [data-living-pulse], etc.
+ * 
+ * Usage:
+ *   <div class="living-pulse pulse-emblem">...</div>
+ *   JS: new LivingPulse().attachAll(); or auto on DOMContentLoaded.
+ */
+
+:root {
+  /* Covenant Pulse Colors - soft, elegant, high-contrast on dark navy/charcoal */
+  --pulse-red: #f8b4b4;
+  --pulse-red-deep: #e88b8b;
+  --pulse-gold: #f4d35e;
+  --pulse-gold-warm: #e8c547;
+  --pulse-gold-light: #f9e8a8;
+
+  /* Timing: exact 90 BPM */
+  --pulse-beat-ms: 666.67; /* 60_000 / 90 */
+  --pulse-breathe-ms: 5400; /* ~11 breaths per minute, calm "life breath" */
+
+  /* Theme integration */
+  --covenant-navy: #0f172a;
+  --covenant-charcoal: #1e2937;
+}
+
+/* Base pulse class - GPU friendly */
+.living-pulse,
+.pulse-emblem,
+.pulse-kpi,
+.pulse-card,
+[data-living-pulse] {
+  will-change: transform, filter, opacity;
+  transition: filter 120ms ease, transform 80ms ease;
+}
+
+/* === HEARTBEAT (90bpm lub-dub realism) === */
+@keyframes covenant-heartbeat {
+  0%, 100% {
+    transform: scale(1);
+    filter: brightness(1) saturate(1);
+  }
+  /* Lub - quick strong contraction */
+  6% {
+    transform: scale(1.12);
+    filter: brightness(1.08) saturate(1.15);
+  }
+  14% {
+    transform: scale(1.0);
+    filter: brightness(1) saturate(1);
+  }
+  /* Short rest */
+  22% {
+    transform: scale(0.98);
+    filter: brightness(0.97) saturate(0.95);
+  }
+  /* Dub - softer secondary */
+  32% {
+    transform: scale(1.07);
+    filter: brightness(1.05) saturate(1.1);
+  }
+  42% {
+    transform: scale(1.0);
+    filter: brightness(1) saturate(1);
+  }
+}
+
+/* === BREATHING (slow life-giving overlay in gold-red) === */
+@keyframes covenant-breathe {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(244, 211, 94, 0);
+    filter: drop-shadow(0 0 0 rgba(248, 180, 180, 0));
+  }
+  40% {
+    transform: scale(1.015);
+    box-shadow: 0 0 18px 4px rgba(244, 211, 94, 0.22);
+    filter: drop-shadow(0 0 6px rgba(248, 180, 180, 0.25));
+  }
+  60% {
+    transform: scale(1.022);
+    box-shadow: 0 0 26px 8px rgba(232, 197, 71, 0.18);
+    filter: drop-shadow(0 0 10px rgba(232, 197, 71, 0.3));
+  }
+  80% {
+    transform: scale(1.01);
+    box-shadow: 0 0 14px 3px rgba(244, 211, 94, 0.15);
+  }
+}
+
+/* Apply animations - infinite, linear timing for easy sync */
+.living-pulse,
+.pulse-emblem {
+  animation: 
+    covenant-heartbeat calc(var(--pulse-beat-ms) * 1ms) infinite ease-in-out,
+    covenant-breathe calc(var(--pulse-breathe-ms) * 1ms) infinite ease-in-out;
+  animation-play-state: running;
+}
+
+/* Variant: stronger for logos/primary emblems */
+.pulse-emblem {
+  animation-duration: calc(var(--pulse-beat-ms) * 1ms), calc(var(--pulse-breathe-ms) * 1ms);
+}
+
+/* KPI / Dashboard cards - subtle, professional */
+.pulse-kpi,
+.pulse-card {
+  animation: 
+    covenant-heartbeat calc(var(--pulse-beat-ms) * 1.05ms) infinite ease-in-out,
+    covenant-breathe calc(var(--pulse-breathe-ms) * 1.1ms) infinite ease-in-out;
+}
+
+/* Reduced motion: respect user preference, keep gentle static emphasis */
+@media (prefers-reduced-motion: reduce) {
+  .living-pulse,
+  .pulse-emblem,
+  .pulse-kpi,
+  .pulse-card,
+  [data-living-pulse] {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .living-pulse::after,
+  .pulse-emblem::after {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: linear-gradient(90deg, var(--pulse-red), var(--pulse-gold));
+    border-radius: 50%;
+    margin: 0 auto;
+    opacity: 0.6;
+  }
+}
+
+/* Optional: JS can override with --pulse-phase for advanced synced effects */
+.living-pulse[data-sync="js"] {
+  animation: none; /* JS takes over via rAF + style.transform */
+}
+
+/* Themed glow for Brotherhood calibration high scores */
+.covenant-score-high .living-pulse {
+  filter: drop-shadow(0 0 8px var(--pulse-gold-warm));
+}
+
+/* Unified navigation styles (centralized for partials system) */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(15, 23, 42, 0.96);
+  border-bottom: 1px solid #334155;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav .logo {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  color: #e2e8f0;
+  text-decoration: none;
+}
+.nav .logo .heart { color: #f8b4b4; }
+.nav-links {
+  display: flex;
+  gap: 1.75rem;
+  font-size: 0.95rem;
+}
+.nav-links a {
+  color: #94a3b8;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.nav-links a:hover {
+  color: #f4d35e;
+  background: rgba(244, 211, 94, 0.08);
+}
+
+/* Footer styling (centralized so all pages get consistent appearance via the partial) */
+.pulse-footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.85rem;
+  color: #64748b;
+  border-top: 1px solid #334155;
+}
+
+.pulse-footer .living-pulse {
+  display: inline-block;
+  vertical-align: middle;
+} 

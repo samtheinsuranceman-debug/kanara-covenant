@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact • Kanara Covenant</title>
+  <link rel="stylesheet" href="css/pulse.css">
+  <style>
+    body { 
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+      background: #0f172a; 
+      color: #e2e8f0; 
+      margin: 0; 
+      line-height: 1.7; 
+    }
+    .container { max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem; }
+    h1 { color: #f4d35e; font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .subtitle { color: #94a3b8; font-size: 1.1rem; margin-bottom: 2rem; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 640px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    .contact-info {
+      background: #1e2937;
+      border: 1px solid #334155;
+      border-radius: 14px;
+      padding: 1.75rem;
+    }
+
+    .contact-info h3 {
+      color: #f4d35e;
+      margin-top: 0;
+    }
+
+    .contact-info p {
+      margin: 0.5rem 0;
+      color: #cbd5e1;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      display: block;
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: #1e2937;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      color: #e2e8f0;
+      font-size: 1rem;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: #f4d35e;
+    }
+
+    .btn {
+      background: #f4d35e;
+      color: #0f172a;
+      font-weight: 700;
+      padding: 0.85rem 2rem;
+      border-radius: 9999px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header data-partial="header"></header>
+
+  <div class="container">
+    <h1>Contact the Circle</h1>
+    <p class="subtitle">
+      Whether you’re exploring the covenant, have a question about brotherhood, or want to discuss stewardship, we’re here.
+    </p>
+
+    <div class="contact-grid">
+      <!-- Contact Form -->
+      <div>
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+
+        <div id="form-success" style="display:none; margin-top:1.5rem; padding:1rem; background:#1e2937; border:1px solid #f4d35e; border-radius:8px; color:#f4d35e;">
+          Thank you. Your message has been received. A brother will respond within 48 hours.
+        </div>
+      </div>
+
+      <!-- Brotherhood Contacts -->
+      <div class="contact-info">
+        <h3>Brotherhood Contacts</h3>
+        <p><strong>Circle Keepers</strong><br>
+        For questions about the covenant, gatherings, or joining the brotherhood.</p>
+        <p style="margin-top:1.25rem;"><strong>Stewardship Circle</strong><br>
+        For conversations around Russell Capital principles, legacy planning, and Kingdom wealth.</p>
+        <p style="margin-top:1.25rem;"><strong>Regional Hosts</strong><br>
+        Looking to start a local circle? We’ll connect you with brothers near you.</p>
+
+        <p style="margin-top:2rem; font-size:0.9rem; color:#64748b;">
+          In-person gatherings are held in Kabambiro and surrounding regions.<br>
+          Virtual options are always available.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <footer data-partial="footer"></footer>
+
+  <script src="js/pulse.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    const form = document.getElementById('contact-form');
+    const success = document.getElementById('form-success');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      form.style.display = 'none';
+      success.style.display = 'block';
+    });
+  </script>
+</body>
+</html>

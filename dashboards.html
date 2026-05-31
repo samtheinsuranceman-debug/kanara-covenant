@@ -1,1 +1,189 @@
-[Full dashboards.html]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Living Portfolios • Russell Covenant Stewardship</title>
+  <link rel="stylesheet" href="css/pulse.css">
+  <style>
+    body { background:#0f172a; color:#e2e8f0; font-family:system-ui, sans-serif; margin:0; line-height:1.6; }
+    .container { max-width:1200px; margin:2rem auto; padding:0 1.5rem; }
+    h1 { color:#f4d35e; margin-bottom:0.25rem; }
+    .kpi-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:1.25rem; margin:2rem 0; }
+    .kpi { background:#1e2937; padding:1.5rem; border-radius:12px; border:1px solid #334155; }
+    .kpi .label { font-size:.85rem; color:#64748b; }
+    .kpi .value { font-size:2.1rem; font-weight:700; color:#f8b4b4; margin:.25rem 0; }
+    .pulse-kpi { transition: box-shadow .2s; }
+
+    .section { margin:3rem 0; }
+    .section h2 { color:#f4d35e; margin-bottom:1rem; }
+
+    .chart-container {
+      background:#1e2937;
+      border:1px solid #334155;
+      border-radius:14px;
+      padding:1.5rem;
+      margin-bottom:1.5rem;
+    }
+
+    .chart-grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap:1.5rem;
+    }
+
+    .dashboard-note {
+      font-size:0.9rem;
+      color:#64748b;
+      margin-top:1rem;
+    }
+  </style>
+</head>
+<body>
+  <header data-partial="header"></header>
+
+  <div class="container">
+    <h1 style="color:#f4d35e">Living Portfolios • 90 BPM Stewardship</h1>
+    <p>These metrics do not sleep. They breathe with the same Covenant heart that animates every page of this site.</p>
+
+    <!-- KPI Cards -->
+    <div class="kpi-grid">
+      <div class="kpi pulse-kpi living-pulse">
+        <div class="label">Total Covenant Assets</div>
+        <div class="value">$4.87M</div>
+        <small style="color:#64748b">+12% YoY • Tax-advantaged</small>
+      </div>
+      <div class="kpi pulse-kpi living-pulse">
+        <div class="label">Physician Wealth Index</div>
+        <div class="value">91</div>
+        <small style="color:#64748b">Top quartile alignment</small>
+      </div>
+      <div class="kpi pulse-kpi living-pulse">
+        <div class="label">Kingdom Giving (YTD)</div>
+        <div class="value">$312k</div>
+        <small style="color:#64748b">6.4% of portfolio • calibrated</small>
+      </div>
+      <div class="kpi pulse-kpi living-pulse">
+        <div class="label">Brotherhood Debt Freedom</div>
+        <div class="value">87%</div>
+        <small style="color:#64748b">14 brothers fully free</small>
+      </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="section">
+      <h2>Portfolio Composition</h2>
+      <div class="chart-grid">
+        <div class="chart-container living-pulse">
+          <canvas id="allocationChart" height="180"></canvas>
+          <div class="dashboard-note">Current allocation across the Covenant’s living portfolios.</div>
+        </div>
+        <div class="chart-container living-pulse">
+          <canvas id="alignmentChart" height="180"></canvas>
+          <div class="dashboard-note">Stewardship alignment scores across the four covenant pillars.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Covenant Wealth Trajectory</h2>
+      <div class="chart-container living-pulse">
+        <canvas id="growthChart" height="120"></canvas>
+        <div class="dashboard-note">Growth of the combined brotherhood portfolio over the last 24 months, synced to the Living Pulse.</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Russell Covenant Insights</h2>
+      <div class="chart-grid">
+        <div class="chart-container">
+          <h3 style="margin-top:0; color:#f8b4b4;">Tax-Advantaged Vehicles</h3>
+          <p style="color:#cbd5e1; font-size:0.95rem;">
+            68% of Covenant assets are held in structures optimized for long-term Kingdom impact and generational transfer.
+          </p>
+        </div>
+        <div class="chart-container">
+          <h3 style="margin-top:0; color:#f8b4b4;">Living Legacy Score</h3>
+          <p style="color:#cbd5e1; font-size:0.95rem;">
+            Current brotherhood average: <strong style="color:#f4d35e;">84/100</strong>. This metric measures how well portfolios are structured to outlive their current stewards.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer data-partial="footer"></footer>
+
+  <!-- Chart.js via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/pulse.js"></script>
+  <script src="js/nav.js"></script>
+
+  <script>
+    // Portfolio Allocation (Doughnut)
+    new Chart(document.getElementById('allocationChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Tax-Advantaged', 'Real Assets', 'Equities (Covenant Screened)', 'Cash & Short-term'],
+        datasets: [{
+          data: [42, 28, 22, 8],
+          backgroundColor: ['#f4d35e', '#e8c547', '#f8b4b4', '#64748b'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { position: 'bottom', labels: { color: '#94a3b8' } } }
+      }
+    });
+
+    // Stewardship Alignment (Bar)
+    new Chart(document.getElementById('alignmentChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Spiritual', 'Relational', 'Financial', 'Communal'],
+        datasets: [{
+          label: 'Alignment Score',
+          data: [88, 79, 91, 84],
+          backgroundColor: '#f4d35e',
+          borderColor: '#e8c547',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: { beginAtZero: true, max: 100, grid: { color: '#334155' }, ticks: { color: '#94a3b8' } },
+          x: { grid: { color: '#334155' }, ticks: { color: '#94a3b8' } }
+        },
+        plugins: { legend: { display: false } }
+      }
+    });
+
+    // Wealth Growth (Line)
+    new Chart(document.getElementById('growthChart'), {
+      type: 'line',
+      data: {
+        labels: ['Jun 24', 'Sep 24', 'Dec 24', 'Mar 25', 'Jun 25', 'Sep 25', 'Dec 25', 'Mar 26'],
+        datasets: [{
+          label: 'Combined Covenant Portfolio (Millions)',
+          data: [3.2, 3.45, 3.6, 3.9, 4.1, 4.35, 4.55, 4.87],
+          borderColor: '#f4d35e',
+          backgroundColor: 'rgba(244, 211, 94, 0.1)',
+          borderWidth: 3,
+          tension: 0.35,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: { grid: { color: '#334155' }, ticks: { color: '#94a3b8' } },
+          x: { grid: { color: '#334155' }, ticks: { color: '#94a3b8' } }
+        },
+        plugins: { legend: { display: false } }
+      }
+    });
+  </script>
+</body>
+</html>

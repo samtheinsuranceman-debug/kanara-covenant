@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gatherings • Kanara Covenant</title>
+  <link rel="stylesheet" href="css/pulse.css">
+  <style>
+    body { 
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+      background: #0f172a; 
+      color: #e2e8f0; 
+      margin: 0; 
+      line-height: 1.6; 
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; }
+    h1 { color: #f4d35e; font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .subtitle { color: #94a3b8; font-size: 1.1rem; margin-bottom: 2rem; }
+    
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    
+    .event-card {
+      background: #1e2937;
+      border: 1px solid #334155;
+      border-radius: 14px;
+      padding: 1.5rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .event-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    }
+    
+    .event-card .date {
+      color: #f4d35e;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .event-card h3 {
+      margin: 0 0 0.75rem;
+      color: #f8b4b4;
+      font-size: 1.25rem;
+    }
+    
+    .event-card p {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    
+    .event-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+    
+    .pulse-badge {
+      background: rgba(244, 211, 94, 0.15);
+      color: #f4d35e;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    
+    .section-title {
+      color: #f4d35e;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+    
+    .past-event {
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+  <header data-partial="header"></header>
+
+  <div class="container">
+    <h1>Gatherings</h1>
+    <p class="subtitle">
+      The Living Covenant beats strongest when we gather in person. 
+      Join us as we align spirit, brotherhood, and stewardship at 90 BPM.
+    </p>
+
+    <h2 class="section-title">Upcoming Gatherings</h2>
+    
+    <div class="events-grid">
+      <!-- Event 1 -->
+      <div class="event-card living-pulse">
+        <div class="date">JUNE 12, 2026 • 7:00 PM</div>
+        <h3>Brotherhood Circle — Monthly Calibration</h3>
+        <p>
+          Deep work on alignment. Bring your current calibration score and one area 
+          where you seek the brotherhood’s witness. The pulse will guide our rhythm.
+        </p>
+        <div class="event-meta">
+          <span>Kabambiro Covenant Hall</span>
+          <span class="pulse-badge">90 BPM</span>
+        </div>
+      </div>
+
+      <!-- Event 2 -->
+      <div class="event-card living-pulse">
+        <div class="date">JUNE 19, 2026 • 6:30 PM</div>
+        <h3>Covenant Stewardship Intensive</h3>
+        <p>
+          Russell Capital principles applied to Kingdom wealth. 
+          Review of tax-efficient structures, legacy planning, and how our portfolios 
+          can serve the living covenant.
+        </p>
+        <div class="event-meta">
+          <span>Virtual + In-Person (Hybrid)</span>
+          <span class="pulse-badge">Living Pulse</span>
+        </div>
+      </div>
+
+      <!-- Event 3 -->
+      <div class="event-card living-pulse">
+        <div class="date">JUNE 28, 2026 • 9:00 AM</div>
+        <h3>90 BPM Dawn Ritual &amp; Breakfast</h3>
+        <p>
+          Start the day in rhythm. A guided morning gathering centered on the 
+          Living Pulse — breath, movement, scripture, and shared intention.
+        </p>
+        <div class="event-meta">
+          <span>Lakeside at Kabambiro</span>
+          <span class="pulse-badge">Open to All</span>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Past Gatherings</h2>
+    
+    <div class="events-grid">
+      <div class="event-card past-event">
+        <div class="date">MAY 8, 2026</div>
+        <h3>First Covenant Renewal Ceremony</h3>
+        <p>
+          Seventeen brothers renewed their vows under the open sky. 
+          The 90 BPM drum circle continued for nearly two hours.
+        </p>
+      </div>
+      
+      <div class="event-card past-event">
+        <div class="date">MAY 22, 2026</div>
+        <h3>Stewardship Roundtable with Russell Capital</h3>
+        <p>
+          Guest session on physician wealth strategies reframed through 
+          covenant theology. Recording available in Resources.
+        </p>
+      </div>
+    </div>
+
+    <p style="text-align: center; margin-top: 3rem; color: #64748b;">
+      Want to host a regional gathering or propose a new rhythm?<br>
+      <a href="contact.html" style="color: #f4d35e;">Speak with the Circle Keepers →</a>
+    </p>
+  </div>
+
+  <footer data-partial="footer"></footer>
+
+  <script src="js/pulse.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>
